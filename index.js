@@ -9,6 +9,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 // Set templating engine
 app.set('view engine', 'pug');
+app.set('views', 'views');
 
 // Static files
 app.use(express.static('public'));
