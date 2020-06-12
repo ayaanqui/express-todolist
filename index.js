@@ -16,10 +16,19 @@ app.use(express.static('public'));
 
 // Routes
 app.get('/', (req, res, next) => {
-    res.render('index');
+  res.render('index');
 });
 
-const port = 3000;
-app.listen(port, () => {
-    console.log(`\nServer running on port ${port} at http://localhost:${port}/\n\n`);
-});
+// Sequelize
+const sequelize = require('./database/database');
+
+sequelize.sync()
+  .then(() => {
+    const port = 3000;
+    app.listen(port, () => {
+      console.log(`\nServer running on port ${port} at http://localhost:${port}/\n\n`);
+    });
+  })
+  .catch(err => {
+    console.error('Unable to connect to the database:', err);
+  });
