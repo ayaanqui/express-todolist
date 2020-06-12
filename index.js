@@ -1,9 +1,8 @@
 const express = require('express');
 const app = express();
+const db = require('./database');
 
-/**
- * Middleware
- */
+// Middlware
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: false }));
 
@@ -19,16 +18,13 @@ app.get('/', (req, res, next) => {
   res.render('index');
 });
 
-// Sequelize
-const sequelize = require('./database/database');
+// Models
+const User = require('./models/User');
 
-sequelize.sync()
-  .then(() => {
-    const port = 3000;
-    app.listen(port, () => {
-      console.log(`\nServer running on port ${port} at http://localhost:${port}/\n\n`);
-    });
-  })
-  .catch(err => {
-    console.error('Unable to connect to the database:', err);
-  });
+const port = 3000;
+app.listen(port, () => {
+  User.createUserTable()
+    .catch(err => console.log(err));
+
+  console.log(`\nServer running on http://localhost:${port}/\n\n`);
+});
