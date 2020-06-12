@@ -23,3 +23,7 @@ exports.findById = id => {
 exports.findByUsername = username => {
   return db.query(`SELECT * FROM ${table} WHERE username=$1`, username);
 };
+
+exports.findByEmail = email => {
+  return db.query(`SELECT * FROM ${table} WHERE email=$1`, email);
+};
