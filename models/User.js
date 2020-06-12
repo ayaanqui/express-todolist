@@ -27,3 +27,7 @@ exports.findByUsername = username => {
 exports.findByEmail = email => {
   return db.query(`SELECT * FROM ${table} WHERE email=$1`, email);
 };
+
+exports.insert = (username, email) => {
+  return db.query(`INSERT INTO ${table} (username, email) VALUES ($1, $2)`, [username, email]);
+}
