@@ -14,9 +14,7 @@ app.set('views', 'views');
 app.use(express.static('public'));
 
 // Routes
-app.get('/', (req, res, next) => {
-  res.render('index');
-});
+app.use(require('./routes'));
 
 // Models
 const User = require('./models/User');
