@@ -1,7 +1,7 @@
 extends ../../layouts/base
 
 block content
-  if loggedIn
+  if (loggedIn == true)
     form.input-group.mb-3(action="/tasks/add-task" method="post")
       input.form-control(type='text' placeholder="Write your tasks here...")
       .input-group-append
