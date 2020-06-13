@@ -6,6 +6,9 @@ const db = require('./database');
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: false }));
 
+const cookieParser = require('cookie-parser');
+app.use(cookieParser());
+
 // Set templating engine
 app.set('view engine', 'pug');
 app.set('views', 'views');
