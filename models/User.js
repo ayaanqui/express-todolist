@@ -6,8 +6,8 @@ exports.createUserTable = () => {
   return db.query(`
       CREATE TABLE IF NOT EXISTS ${table}(
         id       SERIAL PRIMARY KEY,
-        username VARCHAR(30) NOT NULL,
-        email    VARCHAR(320) NOT NULL
+        username VARCHAR(30) NOT NULL UNIQUE,
+        email    VARCHAR(320) NOT NULL UNIQUE
       );
     `);
 };
