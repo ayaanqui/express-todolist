@@ -10,7 +10,12 @@ html(lang="en")
     link(rel="stylesheet" href="css/bootstrap.min.css")
     block styles
   body
-    block content
+    nav.navbar.navbar-light.bg-white
+      .container
+        a.navbar-brand(href="#") TodoList
+
+    .container.mt-5
+      block content
 
     script(src="js/jquery-3.5.1.slim.min.js")
     script(src="js/popper.min.js")
