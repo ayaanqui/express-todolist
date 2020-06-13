@@ -2,7 +2,7 @@ const db = require('../database');
 
 const table = 'users';
 
-exports.createUserTable = () => {
+exports.createTable = () => {
   return db.query(`
       CREATE TABLE IF NOT EXISTS ${table}(
         id       SERIAL PRIMARY KEY,

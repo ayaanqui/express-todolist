@@ -21,7 +21,7 @@ const User = require('./models/User');
 
 const port = 3000;
 app.listen(port, () => {
-  User.createUserTable()
+  User.createTable()
     .catch(err => console.log(err));
 
   console.log(`\nServer running on http://localhost:${port}/\n\n`);
