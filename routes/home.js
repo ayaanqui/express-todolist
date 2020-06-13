@@ -4,5 +4,6 @@ const router = express.Router();
 const homeController = require('../controllers/home');
 
 router.get('/', homeController.home);
+router.post('/signup', homeController.signup);
 
 module.exports = router;
