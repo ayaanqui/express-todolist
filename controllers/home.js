@@ -1,8 +1,9 @@
 const User = require('../models/User');
 
 exports.home = (req, res, next) => {
-  const loggedIn = (req.user) ? true : false;
-  return res.render('pages/home/index', { loggedIn: loggedIn });
+  const user = (req.cookies.user) ? req.cookies.user : null;
+  const loggedIn = (user) ? true : false;
+  return res.render('pages/home/index', { loggedIn: loggedIn, user: user });
 };
 
 exports.signup = (req, res, next) => {
