@@ -1,0 +1,31 @@
+form(action="/signup/" method="post")
+  h3.text-center 
+    | Sign up 
+    i.text-muted / 
+    | Login
+
+  br
+
+  .alert.alert-warning.mb-5(role="alert")
+    | You must 
+    b sign up 
+    | / 
+    b login 
+    | before using TodoList
+
+  .form-group
+    label(for='email') Email address
+    input#email.form-control(type='email' name='email' placeholder='johndoe@example.com' aria-describedby='emailHelp')
+    small#emailHelp.form-text.text-muted 
+      i *We&apos;ll never share your email with anyone else.
+
+  .form-row
+    label(for='username') Username
+    .input-group.mb-2
+      .input-group-prepend
+        .input-group-text @
+      input#username.form-control(type='text' name='username' placeholder='johndoe')
+
+  br
+
+  button.btn.btn-primary(type='submit') Sign up / Login
