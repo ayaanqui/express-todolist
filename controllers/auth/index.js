@@ -12,13 +12,10 @@ exports.auth = (req, res, next) => {
       if (rows.length > 0) {
         res.cookie('user', rows[0]).redirect('/');
       } else {
-        User.insert(body.username, body.email).then(result => console.log(result))
+        User.insert(body.username, body.email)
           .then(result => {
             User.findByUsername(body.username)
-              .then(({ rows }) => {
-                console.log(rows);
-                res.cookie('user', rows[0]).redirect('/');
-              })
+              .then(({ rows }) => res.cookie('user', rows[0]).redirect('/'))
               .catch(err => console.log(err));
           })
           .catch(err => console.log(err));
