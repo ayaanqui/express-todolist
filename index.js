@@ -19,13 +19,11 @@ app.use(express.static('public'));
 // Routes
 app.use(require('./routes'));
 
-// Models
-const User = require('./models/User');
-
-const port = 3000;
-app.listen(port, () => {
-  User.createTable()
-    .catch(err => console.log(err));
-
-  console.log(`\nServer running on http://localhost:${port}/\n\n`);
-});
+db.sync()
+  .then(res => {
+    const port = 3000;
+    app.listen(port, () => {
+      console.log(`\nServer running on http://localhost:${port}/\n\n`);
+    });
+  })
+  .catch(err => console.log(err));
