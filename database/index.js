@@ -1,11 +1,13 @@
-const Postgres = require('pg');
+const Sequelize = require('sequelize');
 
-const db = new Postgres.Pool({
-  user: 'ayaanqui',
-  password: require('./password'),
-  host: 'localhost',
-  port: 5432,
-  database: 'expressTodoList'
-});
+const db = new Sequelize(
+  'expressTodoList',
+  'ayaanqui',
+  require('./password'),
+  {
+    host: 'localhost',
+    dialect: 'postgres'
+  }
+);
 
 module.exports = db;
