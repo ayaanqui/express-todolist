@@ -1,13 +1,17 @@
+const Sequelize = require('sequelize');
 const db = require('../database');
 
-const table = 'tasks';
+const Task = db.define('task', {
+  id: {
+    type: Sequelize.INTEGER,
+    autoIncrement: true,
+    allowNull: false,
+    primaryKey: true,
+  },
+  username: {
+    type: Sequelize.TEXT,
+    allowNull: false,
+  },
+});
 
-exports.createTable = () => {
-  return db.query(`
-      CREATE TABLE IF NOT EXISTS ${table}(
-        id      SERIAL PRIMARY KEY,
-        task    TEXT NOT NULL,
-        userId  INT NOT NULL
-      );
-    `);
-};
+module.exports = Task;
