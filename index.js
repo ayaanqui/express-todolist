@@ -19,7 +19,16 @@ app.use(express.static('public'));
 // Routes
 app.use(require('./routes'));
 
-db.sync()
+/**
+ * Models relationships
+ */
+const User = require('./models/User');
+const Task = require('./models/Task');
+// Task belongs to User, User may have multiple Tasks
+User.hasMany(Task, { onDelete: 'CASCADE' });
+Task.belongsTo(User, { onDelete: 'CASCADE' });
+
+db.sync({ force: true })
   .then(res => {
     const port = 3000;
     app.listen(port, () => {
