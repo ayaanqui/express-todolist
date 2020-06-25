@@ -28,7 +28,7 @@ const Task = require('./models/Task');
 User.hasMany(Task, { onDelete: 'CASCADE' });
 Task.belongsTo(User, { onDelete: 'CASCADE' });
 
-db.sync({ force: true })
+db.sync()
   .then(res => {
     const port = 3000;
     app.listen(port, () => {
