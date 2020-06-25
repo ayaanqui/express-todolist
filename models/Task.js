@@ -1,5 +1,6 @@
 const Sequelize = require('sequelize');
 const db = require('../database');
+const User = require('./User');
 
 const Task = db.define('task', {
   id: {
@@ -11,6 +12,15 @@ const Task = db.define('task', {
   username: {
     type: Sequelize.TEXT,
     allowNull: false,
+  },
+  completed: {
+    type: Sequelize.BOOLEAN,
+    allowNull: true,
+    defaultValue: false,
+  },
+  completedAt: {
+    type: Sequelize.DATE,
+    allowNull: true,
   },
 });
 
