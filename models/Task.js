@@ -9,9 +9,13 @@ const Task = db.define('task', {
     allowNull: false,
     primaryKey: true,
   },
-  username: {
+  task: {
     type: Sequelize.TEXT,
     allowNull: false,
+  },
+  detail: {
+    type: Sequelize.TEXT,
+    allowNull: true,
   },
   completed: {
     type: Sequelize.BOOLEAN,
