@@ -19,6 +19,6 @@ module.exports = (req, res, next) => {
       })
       .catch(err => console.log(err));
   } else {
-    res.redirect('/');
+    res.status(401).send({ 'message': 'You must be authenticated in order to create a task' });
   }
 };
