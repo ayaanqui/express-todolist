@@ -1,10 +1,7 @@
 extends ../../layouts/base
 
 block content
-  if (loggedIn == true)
-    form.input-group.mb-3(action="/tasks/add-task/" method="post")
-      input.form-control(type='text' placeholder="Write your tasks here..." name="task")
-      .input-group-append
-        button#button-addon2.btn.btn-outline-secondary(type='submit') Add Task
-  else
-    include ./signup
+  form.input-group.mb-3(action="/tasks/add-task/" method="post")
+    input.form-control(type='text' placeholder="Write your tasks here..." name="task")
+    .input-group-append
+      button#button-addon2.btn.btn-outline-secondary(type='submit') Add Task
