@@ -1,7 +1,7 @@
 const User = require('../models/User');
 const Task = require('../models/Task');
 
-exports.fetchAll = (req, res, next) => {
+exports.getTasks = (req, res, next) => {
   const localUser = req.cookies.user;
 
   if (localUser) {
@@ -22,7 +22,7 @@ exports.fetchAll = (req, res, next) => {
   }
 };
 
-exports.fetchOne = (req, res, next) => { };
+exports.getTask = (req, res, next) => { };
 
 exports.postAddTask = (req, res, next) => {
   const body = req.body;
