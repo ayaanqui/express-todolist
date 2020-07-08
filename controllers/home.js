@@ -1,4 +1,5 @@
 const User = require('../models/User');
+const Task = require('../models/Task');
 
 exports.home = (req, res, next) => {
   const localUser = (req.cookies.user) ? req.cookies.user : null;
@@ -19,7 +20,12 @@ exports.home = (req, res, next) => {
           res.cookie('user', '', { expires: new Date(0) });
           return res.render(signupPage);
         }
-        return res.render('pages/home/index', { user: user });
+
+        Task.findAll({ where: { userId: user.id } })
+          .then(tasks => {
+            res.render('pages/home/index', { user: user, tasks: tasks });
+          })
+          .catch(err => console.log(err));
       })
       .catch(err => console.log(err));
   } else {
