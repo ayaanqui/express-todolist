@@ -5,3 +5,18 @@ block content
     input.form-control(type='text' placeholder="Write your tasks here..." name="task")
     .input-group-append
       button#button-addon2.btn.btn-outline-secondary(type='submit') Add Task
+
+  .tasks-display
+    ul.list-group#tasks-display-list
+      if tasks && tasks.length > 0
+        each task in tasks
+          li.list-group-item
+            .custom-control.custom-checkbox
+              input#customCheck1.custom-control-input(type='checkbox')
+              label.custom-control-label(for='customCheck1')
+              span #{task.task}
+      else
+        li.list-group-item.text-center.text-muted.pt-4
+          h2 No Tasks
+          p Start adding tasks to get things done on time, and get productive.
+
