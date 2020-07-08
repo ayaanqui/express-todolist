@@ -1,9 +1,10 @@
 const Sequelize = require('sequelize');
+const dbuser = require('./dbuser.json');
 
 const db = new Sequelize(
   'expressTodoList',
-  'ayaanqui',
-  require('./password'),
+  dbuser.username,
+  dbuser.password,
   {
     host: 'localhost',
     dialect: 'postgres'
