@@ -12,7 +12,10 @@ exports.getTasks = (req, res, next) => {
       where: { username: localUser.username, email: localUser.email }
     })
       .then(user => {
-        Task.findAll({ where: { userId: user.id } })
+        Task.findAll({
+          where: { userId: user.id },
+          order: [['id', 'DESC']]
+        })
           .then(tasks => res.status(200).send(tasks))
           .catch(err => console.log(err));
       })

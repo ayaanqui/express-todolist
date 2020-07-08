@@ -21,7 +21,10 @@ exports.home = (req, res, next) => {
           return res.render(signupPage);
         }
 
-        Task.findAll({ where: { userId: user.id } })
+        Task.findAll({
+          where: { userId: user.id },
+          order: [['id', 'DESC']]
+        })
           .then(tasks => {
             res.render('pages/home/index', { user: user, tasks: tasks });
           })
