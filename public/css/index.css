@@ -1,3 +1,7 @@
 .container {
     max-width: 500px;
 }
+
+.strike-through {
+    text-decoration: line-through;
+}
