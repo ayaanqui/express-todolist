@@ -1,12 +1,12 @@
 extends ../../layouts/base
 
 block content
-  form.input-group.mb-3(action="/tasks/add-task/" method="post")
+  form.input-group.mb-3#add-task(action="/tasks/add-task/" method="post")
     input.form-control(type='text' placeholder="Write your tasks here..." name="task")
     .input-group-append
-      button#button-addon2.btn.btn-outline-secondary(type='submit') Add Task
+      button.btn.btn-outline-secondary#add-task-button(type='submit') Add Task
 
-  .tasks-display
+  .tasks-display.mb-5
     ul.list-group#tasks-display-list
       if tasks && tasks.length > 0
         each task in tasks
