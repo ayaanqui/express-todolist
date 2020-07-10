@@ -37,6 +37,7 @@ $("#add-task").submit(event => {
     `${url}/add-task`,
     $("#add-task").serialize(),
     data => {
+      $('#task-input').val('');
       $('#tasks-display-list').prepend(taskView(data));
     });
   event.preventDefault();
