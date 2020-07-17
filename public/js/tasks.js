@@ -6,7 +6,7 @@ const toggleCompleteTask = (obj, taskId) => {
     $.ajax({
       url: `${url}/${taskId}/?completed=true`,
       success: res => {
-        $(`#task_${taskId}`).addClass('strike-through');
+        $(`#task_content_${taskId}`).addClass('strike-through');
       }
     });
   } else {
@@ -14,7 +14,7 @@ const toggleCompleteTask = (obj, taskId) => {
     $.ajax({
       url: `${url}/${taskId}/?completed=false`,
       success: res => {
-        $(`#task_${taskId}`).removeClass('strike-through');
+        $(`#task_content_${taskId}`).removeClass('strike-through');
       }
     });
   }
@@ -23,9 +23,19 @@ const toggleCompleteTask = (obj, taskId) => {
 const taskView = task => {
   return `
     <li class="list-group-item" id="task_${task.id}">
-      <div class="custom-control custom-checkbox">
-        <input class="custom-control-input" id="checkbox_${task.id}" type="checkbox" onchange="toggleCompleteTask(this, ${task.id})">
-        <label class="custom-control-label" for="checkbox_${task.id}"></label><span>${task.task}</span>
+      <div class="d-flex justify-content-between">
+        <div class="custom-control custom-checkbox">
+          <input class="custom-control-input" id="checkbox_${task.id}" type="checkbox" onchange="toggleCompleteTask(this, ${task.id})">
+          <label class="custom-control-label" for="checkbox_${task.id}"></label>
+        </div>
+        <div class="task-content flex-fill" id="task_content_${task.id}">
+          <span>${task.task}</span>
+        </div>
+        <div class="task-options">
+          <a class="close" href="#" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Delete task permanently">
+            <span aria-hidden="true">×</span>
+          </a>
+        </div>
       </div>
     </li>
   `
