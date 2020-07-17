@@ -7,6 +7,7 @@ const toggleCompleteTask = (obj, taskId) => {
       url: `${url}/${taskId}/?completed=true`,
       success: res => {
         $(`#task_content_${taskId}`).addClass('strike-through');
+        $(`#task_${taskId}`).addClass('list-group-item-light');
       }
     });
   } else {
@@ -15,6 +16,7 @@ const toggleCompleteTask = (obj, taskId) => {
       url: `${url}/${taskId}/?completed=false`,
       success: res => {
         $(`#task_content_${taskId}`).removeClass('strike-through');
+        $(`#task_${taskId}`).removeClass('list-group-item-light');
       }
     });
   }

@@ -10,7 +10,7 @@ block content
     ul.list-group#tasks-display-list
       if tasks && tasks.length > 0
         each task in tasks
-          li.list-group-item(id=`task_${task.id}`)
+          li.list-group-item(id=`task_${task.id}` class=task.completed ? 'list-group-item-light' : '')
             .d-flex.justify-content-between
               .custom-control.custom-checkbox
                 input.custom-control-input(id=`checkbox_${task.id}` type='checkbox' onchange=`toggleCompleteTask(this, ${task.id})` checked=(task.completed ? "checked" : undefined))
