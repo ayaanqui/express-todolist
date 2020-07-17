@@ -46,3 +46,7 @@ $("#add-task").submit(event => {
   }
   event.preventDefault();
 });
+
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
