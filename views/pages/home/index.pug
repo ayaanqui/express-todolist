@@ -10,11 +10,22 @@ block content
     ul.list-group#tasks-display-list
       if tasks && tasks.length > 0
         each task in tasks
-          li.list-group-item(id=`task_${task.id}` class=task.completed ? 'strike-through' : '')
-            .custom-control.custom-checkbox
-              input.custom-control-input(id=`checkbox_${task.id}` type='checkbox' onchange=`toggleCompleteTask(this, ${task.id})` checked=(task.completed ? "checked" : undefined))
-              label.custom-control-label(for=`checkbox_${task.id}`)
-              span #{task.task}
+          li.list-group-item(id=`task_${task.id}`)
+            .d-flex.justify-content-between.align-items-center
+              .custom-control.custom-checkbox
+                input.custom-control-input(id=`checkbox_${task.id}` type='checkbox' onchange=`toggleCompleteTask(this, ${task.id})` checked=(task.completed ? "checked" : undefined))
+                label.custom-control-label(for=`checkbox_${task.id}`)
+              div.task-content.flex-fill(class=task.completed ? 'strike-through' : '')
+                span #{task.task}
+
+              .dropdown.pull-right
+                span#dropdownMenuButton.dropdown-toggle(data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
+                  | x
+                .dropdown-menu(aria-labelledby='dropdownMenuButton')
+                  a.dropdown-item(href='#') Action
+                  a.dropdown-item(href='#') Another action
+                  a.dropdown-item(href='#') Something else here
+
       else
         li.list-group-item.text-center.text-muted.pt-4
           h2 No Tasks
