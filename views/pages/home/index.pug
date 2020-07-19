@@ -15,8 +15,9 @@ block content
               .custom-control.custom-checkbox
                 input.custom-control-input(id=`checkbox_${task.id}` type='checkbox' onchange=`toggleCompleteTask(this, ${task.id})` checked=(task.completed ? "checked" : undefined))
                 label.custom-control-label(for=`checkbox_${task.id}`)
-              div.task-content.flex-fill(id=`task_content_${task.id}` class=task.completed ? 'strike-through' : '')
-                span #{task.task}
+              div.task-content.flex-fill
+                div(id=`task_content_${task.id}` class=task.completed ? 'strike-through' : '') #{task.task}
+                div.small.text-muted.mt-sm-2 #{task.createdAt}
 
               .task-options
                 button.close.btn.btn-small(onclick=`deleteTask(${task.id})` title="Delete task permanently")
