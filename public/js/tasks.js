@@ -34,9 +34,9 @@ const taskView = task => {
           <span>${task.task}</span>
         </div>
         <div class="task-options">
-          <a class="close" href="#" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Delete task permanently">
+          <button class="close btn btn-small" onclick="deleteTask(${task.id})" title="Delete task permanently">
             <span aria-hidden="true">×</span>
-          </a>
+          </button>
         </div>
       </div>
     </li>
