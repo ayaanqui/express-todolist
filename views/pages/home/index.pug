@@ -19,7 +19,7 @@ block content
                 span #{task.task}
 
               .task-options
-                a.close(href="#" data-toggle="tooltip" data-placement="bottom" title="Delete task permanently")
+                button.close.btn.btn-small(onclick=`deleteTask(${task.id})` data-toggle="tooltip" data-placement="bottom" title="Delete task permanently")
                   span(aria-hidden="true") &times;
 
       else

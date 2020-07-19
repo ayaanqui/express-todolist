@@ -59,6 +59,17 @@ $("#add-task").submit(event => {
   event.preventDefault();
 });
 
+const deleteTask = taskId => {
+  console.log('Task delete button clicked!!');
+  $.ajax({
+    url: `${url}/${taskId}`,
+    type: 'DELETE',
+    success: data => {
+      $(`#task_${taskId}`).remove();
+    }
+  });
+};
+
 $(function () {
   $('[data-toggle="tooltip"]').tooltip()
 })
