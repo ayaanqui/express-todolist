@@ -64,6 +64,35 @@ exports.getTask = (req, res, next) => {
   }
 };
 
+exports.deleteTask = (req, res, next) => {
+  const localUser = req.cookies.user;
+
+  if (localUser) {
+    if (!localUser.username || !localUser.email)
+      return res.status(401).send({ 'message': 'Authentication failed' });
+
+    User.findOne({
+      where: { username: localUser.username, email: localUser.email }
+    })
+      .then(user => {
+        const taskId = req.params.taskId;
+        Task.destroy({
+          where: { userId: user.id, id: taskId }
+        })
+          .then(status => {
+            if (status === 1)
+              return res.status(200).send({ "message": "Task deleted!" });
+            else
+              return res.status(400).send({ "message": "Looks like there was an error when trying to delete the task" });
+          })
+          .catch(err => console.log(err));
+      })
+      .catch(err => console.log(err));
+  } else {
+    res.status(401).send({ 'message': 'You must be authenticated in order to create a task' });
+  }
+};
+
 exports.postEditTask = (req, res, next) => {
   const localUser = req.cookies.user;
 
