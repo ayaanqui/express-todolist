@@ -7,12 +7,13 @@ block content
       button.btn.btn-outline-secondary#add-task-button(type='submit') Add Task
 
   .tasks-display.mb-5
+    .jumbotron.pt-5.pb-4#no-tasks(style=(tasks.length > 0) ? 'display: none' : '')
+      h2 You don't have any tasks yet...
+      p
+        | Start adding tasks to get things done on time, and get productive.
+
+
     ul.list-group#tasks-display-list
-
-      li.list-group-item.text-center.text-muted.pt-4#no-tasks(style=(tasks.length > 0) ? 'display: none' : '' )
-        h2 No Tasks
-        p Start adding tasks to get things done on time, and get productive.
-
       each task in tasks
         li.list-group-item(id=`task_${task.id}` class=task.completed ? 'list-group-item-light' : '')
           .d-flex.justify-content-between
