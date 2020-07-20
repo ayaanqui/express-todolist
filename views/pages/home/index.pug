@@ -8,24 +8,23 @@ block content
 
   .tasks-display.mb-5
     ul.list-group#tasks-display-list
-      if tasks && tasks.length > 0
-        each task in tasks
-          li.list-group-item(id=`task_${task.id}` class=task.completed ? 'list-group-item-light' : '')
-            .d-flex.justify-content-between
-              .custom-control.custom-checkbox
-                input.custom-control-input(id=`checkbox_${task.id}` type='checkbox' onchange=`toggleCompleteTask(this, ${task.id})` checked=(task.completed ? "checked" : undefined))
-                label.custom-control-label(for=`checkbox_${task.id}`)
-              div.task-content.flex-fill
-                div(id=`task_content_${task.id}` class=task.completed ? 'strike-through' : '') #{task.task}
-                div.small.text-muted.mt-sm-2 #{task.createdAt}
 
-              .task-options
-                button.close.btn.btn-small(onclick=`deleteTask(${task.id})` title="Delete task permanently")
-                  span(aria-hidden="true") &times;
+      li.list-group-item.text-center.text-muted.pt-4#no-tasks(style=(tasks.length > 0) ? 'display: none' : '' )
+        h2 No Tasks
+        p Start adding tasks to get things done on time, and get productive.
 
-      else
-        li.list-group-item.text-center.text-muted.pt-4
-          h2 No Tasks
-          p Start adding tasks to get things done on time, and get productive.
+      each task in tasks
+        li.list-group-item(id=`task_${task.id}` class=task.completed ? 'list-group-item-light' : '')
+          .d-flex.justify-content-between
+            .custom-control.custom-checkbox
+              input.custom-control-input(id=`checkbox_${task.id}` type='checkbox' onchange=`toggleCompleteTask(this, ${task.id})` checked=(task.completed ? "checked" : undefined))
+              label.custom-control-label(for=`checkbox_${task.id}`)
+            div.task-content.flex-fill
+              div(id=`task_content_${task.id}` class=task.completed ? 'strike-through' : '') #{task.task}
+              div.small.text-muted.mt-sm-2 #{task.createdAt}
+
+            .task-options
+              button.close.btn.btn-small(onclick=`deleteTask(${task.id})` title="Delete task permanently")
+                span(aria-hidden="true") &times;
 
   script(src="js/tasks.js")
