@@ -30,8 +30,9 @@ const taskView = task => {
           <input class="custom-control-input" id="checkbox_${task.id}" type="checkbox" onchange="toggleCompleteTask(this, ${task.id})">
           <label class="custom-control-label" for="checkbox_${task.id}"></label>
         </div>
-        <div class="task-content flex-fill" id="task_content_${task.id}">
-          <span>${task.task}</span>
+        <div class="task-content flex-fill">
+          <div id="task_content_${task.id}">${task.task}</div>
+          <div class="small text-muted mt-sm-2">${task.createdAt}</div>
         </div>
         <div class="task-options">
           <button class="close btn btn-small" onclick="deleteTask(${task.id})" title="Delete task permanently">
