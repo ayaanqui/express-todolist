@@ -54,6 +54,7 @@ $("#add-task").submit(event => {
       data => {
         taskElem.val('');
         $('#tasks-display-list').prepend(taskView(data));
+        $('#no-tasks').hide();
       });
   }
   event.preventDefault();
