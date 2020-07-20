@@ -105,9 +105,17 @@ exports.postEditTask = (req, res, next) => {
     })
       .then(user => {
         const body = req.body;
-        if (body.taskId) {
-          Task.findAll({ where: { userId: user.id, id: body.taskId } })
-            .then(tasks => res.status(200).send(tasks))
+        const taskId = req.params.taskId;
+        if (taskId) {
+          Task.update(
+            { task: body.task },
+            {
+              where: { userId: user.id, id: taskId }
+            }
+          )
+            .then(updatedTask => {
+              return res.status(200).send(updatedTask);
+            })
             .catch(err => console.log(err));
         }
       })
