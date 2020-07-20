@@ -31,7 +31,7 @@ const taskView = task => {
           <label class="custom-control-label" for="checkbox_${task.id}"></label>
         </div>
         <div class="task-content flex-fill">
-          <div id="task_content_${task.id}">${task.task}</div>
+          <div id="task_content_${task.id}" onkeyup="editTask(${task.id})" contenteditable="true">${task.task}</div>
           <div class="small text-muted mt-sm-2">${task.createdAt}</div>
         </div>
         <div class="task-options">
@@ -75,3 +75,14 @@ const deleteTask = taskId => {
 $(function () {
   $('[data-toggle="tooltip"]').tooltip()
 })
+
+const editTask = taskId => {
+  const taskContentElem = $(`#task_content_${taskId}`);
+  const taskVal = taskContentElem.text();
+  $.ajax({
+    url: `${url}/${taskId}/edit`,
+    type: 'PUT',
+    data: { task: taskVal },
+    success: data => { }
+  });
+};
