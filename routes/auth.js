@@ -6,12 +6,13 @@ const passport = require('passport');
 const authController = require('../controllers/auth');
 
 router.post(
-  '/signup',
+  '/login',
   passport.authenticate('local', {
     successRedirect: '/',
     failureRedirect: '/',
     failureFlash: false
   })
 );
+router.post('/register', authController.register);
 
 module.exports = router;
