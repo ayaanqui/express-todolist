@@ -1,20 +1,19 @@
 const User = require('../../models/User');
 
-exports.auth = (req, res, next) => {
+exports.register = (req, res, next) => {
   const body = req.body;
 
   if (!body.username || !body.email)
-    res.redirect('/');
+    res.status().send({ message: 'Username or email field missing' });
 
-  User
-    .findOrCreate({
-      where: {
-        username: body.username,
-        email: body.email,
-      }
-    })
+  User.findOrCreate({
+    where: { username: body.username, email: body.email }
+  })
     .then(([user, created]) => {
-      res.cookie('user', user).redirect('/');
+      if (created === true)
+        return res.status(201).send({ user: user });
+      else
+        return res.status(422).send({ message: 'User with the Username/Email already exists' });
     })
-    .catch(err => res.status(400).send({ message: 'Username or Email is already in use' }));
+    .catch(err => console.log(err));
 };
