@@ -13,6 +13,6 @@ router.post(
     failureFlash: false
   })
 );
-router.post('/register', authController.register);
+router.post('/signup', authController.register);
 
 module.exports = router;

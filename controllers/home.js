@@ -3,7 +3,7 @@ const Task = require('../models/Task');
 
 exports.home = (req, res, next) => {
   const user = req.user;
-  const signupPage = 'pages/home/signup';
+  const signupPage = 'pages/login';
 
   if (user) {
     Task.findAll({

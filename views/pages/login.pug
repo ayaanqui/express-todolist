@@ -1,19 +1,18 @@
-extends ../../layouts/base
+extends ../layouts/base
 
 block content
-  form(action="/signup/" method="post")
-    h3.text-center 
-      | Sign up 
-      i.text-muted / 
-      | Login
+  form(action="/auth/login/" method="post")
+    h3.text-center Login
 
     br
 
     .alert.alert-warning.mb-5(role="alert")
       | You must 
-      b sign up 
-      | / 
-      b login 
+      b
+        a(href='/signup') sign up
+      | &nbsp;or&nbsp; 
+      b 
+        a(href='/') login 
       | before using TodoList
 
     .form-group
@@ -31,4 +30,4 @@ block content
 
     br
 
-    button.btn.btn-primary(type='submit') Sign up / Login
+    button.btn.btn-primary(type='submit') Login
