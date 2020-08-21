@@ -11,7 +11,7 @@ npm install
 ```
 
 ### Setting up database
-1. Create a new Postgres database named `expressTodoList`
+1. Create a new Postgres database named `expresstodolist`
 1. Now, create a file named `dbuser.json` inside `[project_root]/database/`
     - Add the following to `dbuser.json`: `{ "username": "", "password": "" }` and replace the empty quotes with the appropriate username and password values (*Note: `dbuser.json` is never staged*)
 
